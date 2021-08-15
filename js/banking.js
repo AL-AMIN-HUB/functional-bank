@@ -1,34 +1,16 @@
-/* function doubleIt(num) {
-    const result = num * 2;
-    return result;
-}
-
-const first = doubleIt(5);
-const second = doubleIt(7); */
-
-
-function getInputValue() {
-    const depositInput = document.getElementById('deposit-input');
-    const depositAmount = depositInput.value;
+function getInputValue(inputId) {
+    const inputField = document.getElementById(inputId);
+    const inputAmount = inputField.value;
 
     // clear
-    depositInput.value = '';
-    return depositAmount;
+    inputField.value = '';
+    return inputAmount;
 
 }
 
-
-
-
 document.getElementById('deposit-button').addEventListener('click', function() {
-    /*  const depositInput = document.getElementById('deposit-input');
-     const depositAmount = depositInput.value; */
-
-
     //  The function is called in the bottom line
-    const depositAmount = getInputValue();
-
-
+    const depositAmount = getInputValue('deposit-input');
 
     // get current deposit
     const depositTotal = document.getElementById('deposit-total');
@@ -40,17 +22,14 @@ document.getElementById('deposit-button').addEventListener('click', function() {
     const balanceTotalText = balanceTotal.innerText;
     balanceTotal.innerText = parseFloat(balanceTotalText) + parseFloat(depositAmount);
 
-    /*   // clear
-      depositInput.value = ''; */
-
 });
 
 // handle withdraw button
 
 document.getElementById('withdraw-button').addEventListener('click', function() {
+    const withdrawAmount = getInputValue('withdraw-input');
 
-    const withdrawInput = document.getElementById('withdraw-input');
-    const withdrawAmount = withdrawInput.value;
+    // update withdraw total
     const withdrawTotal = document.getElementById('withdraw-total');
     const withdrawTotalText = withdrawTotal.innerText;
     withdrawTotal.innerText = parseFloat(withdrawTotalText) + parseFloat(withdrawAmount);
@@ -60,9 +39,4 @@ document.getElementById('withdraw-button').addEventListener('click', function() 
     const totalBalance = document.getElementById('balance-total');
     const totalBalanceText = totalBalance.innerText;
     totalBalance.innerText = parseFloat(totalBalanceText) - parseFloat(withdrawAmount);
-
-    // clear
-    withdrawInput.value = '';
-
-
 })
